@@ -1,0 +1,49 @@
+<div class="chat-container p-3">
+  <div class="d-flex align-items-center mb-3 pb-3 border-bottom">
+    <h5 class="mb-0">💬 AI Assistant</h5>
+    <span class="badge bg-success ms-auto">Online</span>
+    <%= link_to "New Chat", root_path(new_chat: true), class: "btn btn-sm btn-outline-primary ms-2" %>
+  </div>
+  
+  <%# Get or create conversation %>
+  <% conversation = session[:conversation_id] ? Conversation.find_by(id: session[:conversation_id]) : nil %>
+  <% conversation ||= Conversation.create! %>
+  <% session[:conversation_id] = conversation.id %>
+  
+  <div class="chat-messages" id="chat-messages">
+    <%# Welcome message if no messages %>
+    <% if conversation.messages.empty? %>
+      <div class="message bot-message">
+        <div class="card">
+          <div class="card-body py-2 px-3">
+            <small class="text-muted d-block mb-1">Bot</small>
+            <p class="mb-0">Hello! I'm powered by Groq AI. How can I help you?</p>
+            <small class="text-muted"><%= Time.now.strftime("%H:%M") %></small>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    
+    <%# Existing messages %>
+    <%= render conversation.messages.recent %>
+  </div>
+  
+  <div class="chat-input"  id="new_message">
+    <%= form_with model: [conversation, Message.new], 
+                  url: conversation_messages_path(conversation),
+                  local: false,
+                  data: { turbo_frame: false } do |form| %>
+      <div class="input-group mb-2">
+        <%= form.text_field :content, 
+                           class: "form-control", 
+                           placeholder: "Type your message...", 
+                           autocomplete: "off",
+                           data: { action: "keydown->chat#handleEnter" } %>
+        <%= form.submit "Send", class: "btn btn-outline-primary" %>
+      </div>
+      <div class="d-flex justify-content-between">
+        <small class="text-muted">Powered by Groq</small>
+      </div>
+    <% end %>
+  </div>
+</div>

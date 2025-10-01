@@ -1,0 +1,49 @@
+<%# Add user message %>
+<%= turbo_stream.append "chat-messages" do %>
+  <div class="message user-message">
+    <div class="card">
+      <div class="card-body py-2 px-3">
+        <small class="text-muted d-block mb-1">You</small>
+        <p class="mb-0"><%= @message.content %></p>
+        <small class="text-muted"><%= @message.created_at.strftime("%H:%M") %></small>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%# Add bot response %>
+<%= turbo_stream.append "chat-messages" do %>
+  <div class="message bot-message">
+    <div class="card">
+      <div class="card-body py-2 px-3">
+        <small class="text-muted d-block mb-1">Bot</small>
+        <p class="mb-0"><%= @bot_message.response %></p>
+        <small class="text-muted"><%= @bot_message.created_at.strftime("%H:%M") %></small>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%# Clear the form %>
+<%= turbo_stream.update "new_message" do %>
+  <%= form_with model: [@conversation, Message.new], 
+                url: conversation_messages_path(@conversation),
+                local: false,
+                data: { turbo_frame: false } do |form| %>
+    <div class="input-group mb-2">
+      <%= form.text_field :content, 
+                         class: "form-control", 
+                         placeholder: "Type your message...", 
+                         autocomplete: "off" %>
+      <%= form.submit "Send", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+<% end %>
+
+<%# Auto-scroll to bottom %>
+<%= turbo_stream.append "chat-messages" do %>
+  <script>
+    document.getElementById('chat-messages').scrollTop = 
+    document.getElementById('chat-messages').scrollHeight;
+  </script>
+<% end %>

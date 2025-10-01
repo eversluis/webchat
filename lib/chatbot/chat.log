@@ -1,0 +1,528 @@
+2025-09-30 15:11:27,907 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 15:11:27,908 - __main__ - INFO - Starting Flask API server...
+2025-09-30 15:11:27,908 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 15:11:27,908 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 15:11:27,931 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.155.247:5000
+2025-09-30 15:11:27,932 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 15:11:27,939 - werkzeug - INFO -  * Restarting with stat
+2025-09-30 15:11:28,470 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 15:11:28,471 - __main__ - INFO - Starting Flask API server...
+2025-09-30 15:11:28,471 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 15:11:28,471 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 15:11:28,475 - werkzeug - WARNING -  * Debugger is active!
+2025-09-30 15:11:28,490 - werkzeug - INFO -  * Debugger PIN: 150-999-716
+2025-09-30 16:06:28,234 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 16:06:28,235 - __main__ - INFO - Starting Flask API server...
+2025-09-30 16:06:28,235 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 16:06:28,235 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 16:06:28,244 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.155.247:5000
+2025-09-30 16:06:28,244 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 16:06:28,245 - werkzeug - INFO -  * Restarting with stat
+2025-09-30 16:06:28,820 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 16:06:28,821 - __main__ - INFO - Starting Flask API server...
+2025-09-30 16:06:28,821 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 16:06:28,821 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 16:06:28,826 - werkzeug - WARNING -  * Debugger is active!
+2025-09-30 16:06:28,830 - werkzeug - INFO -  * Debugger PIN: 150-999-716
+2025-09-30 17:17:01,011 - __main__ - INFO - Chat request - Thread: c4e93323-53f7-45cf-8867-4438f8243a01, Message length: 2
+2025-09-30 17:17:01,201 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-09-30 17:17:01,206 - __main__ - ERROR - Error in chat after 0.20s: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 123, in chat
+    for event in chatbot_graph.stream(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 2657, in stream
+    for _ in runner.tick(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 64, in chatbot_node
+    response = llm.invoke(messages)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 395, in invoke
+    self.generate_prompt(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 840, in generate
+    self._generate_with_cache(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 533, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 456, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+During task with name 'chatbot' and id '6bd5e144-2cdc-642a-28a4-ef7b46542bb6'
+2025-09-30 17:17:01,222 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:17:01] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-09-30 17:17:14,050 - __main__ - INFO - Chat request - Thread: c4e93323-53f7-45cf-8867-4438f8243a01, Message length: 11
+2025-09-30 17:17:14,151 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-09-30 17:17:14,152 - __main__ - ERROR - Error in chat after 0.10s: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 123, in chat
+    for event in chatbot_graph.stream(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 2657, in stream
+    for _ in runner.tick(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 64, in chatbot_node
+    response = llm.invoke(messages)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 395, in invoke
+    self.generate_prompt(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 840, in generate
+    self._generate_with_cache(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 533, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 456, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+During task with name 'chatbot' and id 'f21964e9-b0df-1d31-fc5d-362c839d2fd5'
+2025-09-30 17:17:14,154 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:17:14] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-09-30 17:24:23,783 - __main__ - INFO - Chat request - Thread: c4e93323-53f7-45cf-8867-4438f8243a01, Message length: 2
+2025-09-30 17:24:23,916 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-09-30 17:24:23,918 - __main__ - ERROR - Error in chat after 0.14s: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 123, in chat
+    for event in chatbot_graph.stream(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 2657, in stream
+    for _ in runner.tick(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 64, in chatbot_node
+    response = llm.invoke(messages)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 395, in invoke
+    self.generate_prompt(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 840, in generate
+    self._generate_with_cache(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 533, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 456, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+During task with name 'chatbot' and id '47b3bbea-f68b-1b77-138f-d54c2a6b245b'
+2025-09-30 17:24:23,921 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:24:23] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-09-30 17:24:28,606 - __main__ - INFO - Chat request - Thread: c4e93323-53f7-45cf-8867-4438f8243a01, Message length: 5
+2025-09-30 17:24:28,689 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-09-30 17:24:28,690 - __main__ - ERROR - Error in chat after 0.08s: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 123, in chat
+    for event in chatbot_graph.stream(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 2657, in stream
+    for _ in runner.tick(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 64, in chatbot_node
+    response = llm.invoke(messages)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 395, in invoke
+    self.generate_prompt(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 840, in generate
+    self._generate_with_cache(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 533, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 456, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+During task with name 'chatbot' and id '70b8809b-ea56-ad29-8f69-8557988aa4b6'
+2025-09-30 17:24:28,691 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:24:28] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-09-30 17:24:46,732 - __main__ - INFO - Chat request - Thread: c4e93323-53f7-45cf-8867-4438f8243a01, Message length: 5
+2025-09-30 17:24:46,847 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-09-30 17:24:46,848 - __main__ - ERROR - Error in chat after 0.12s: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 123, in chat
+    for event in chatbot_graph.stream(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 2657, in stream
+    for _ in runner.tick(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 64, in chatbot_node
+    response = llm.invoke(messages)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 395, in invoke
+    self.generate_prompt(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 840, in generate
+    self._generate_with_cache(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 533, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 456, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+During task with name 'chatbot' and id '4ec06ea9-a9c0-ed0b-fc9f-c291008e9410'
+2025-09-30 17:24:46,850 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:24:46] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-09-30 17:25:58,508 - __main__ - INFO - Chat request - Thread: test123, Message length: 5
+2025-09-30 17:25:58,628 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-09-30 17:25:58,630 - __main__ - ERROR - Error in chat after 0.12s: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 123, in chat
+    for event in chatbot_graph.stream(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 2657, in stream
+    for _ in runner.tick(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 64, in chatbot_node
+    response = llm.invoke(messages)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 395, in invoke
+    self.generate_prompt(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 840, in generate
+    self._generate_with_cache(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 533, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 456, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+During task with name 'chatbot' and id 'bf9704ac-f346-9941-d98e-ea5b9eb2fdfa'
+2025-09-30 17:25:58,632 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:25:58] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-09-30 17:26:21,659 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 17:26:21,660 - __main__ - INFO - Starting Flask API server...
+2025-09-30 17:26:21,660 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 17:26:21,660 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 17:26:21,676 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.155.247:5000
+2025-09-30 17:26:21,676 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 17:26:21,677 - werkzeug - INFO -  * Restarting with stat
+2025-09-30 17:26:22,204 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 17:26:22,205 - __main__ - INFO - Starting Flask API server...
+2025-09-30 17:26:22,205 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 17:26:22,205 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 17:26:22,210 - werkzeug - WARNING -  * Debugger is active!
+2025-09-30 17:26:22,230 - werkzeug - INFO -  * Debugger PIN: 150-999-716
+2025-09-30 17:26:33,627 - __main__ - INFO - Chat request - Thread: test123, Message length: 5
+2025-09-30 17:26:33,723 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-09-30 17:26:33,724 - __main__ - ERROR - Error in chat after 0.10s: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 123, in chat
+    for event in chatbot_graph.stream(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 2657, in stream
+    for _ in runner.tick(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 64, in chatbot_node
+    response = llm.invoke(messages)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 395, in invoke
+    self.generate_prompt(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 840, in generate
+    self._generate_with_cache(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 533, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 456, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+During task with name 'chatbot' and id 'a37cefb9-69a6-da51-31d3-418601f7845c'
+2025-09-30 17:26:33,727 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:26:33] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-09-30 17:27:01,512 - __main__ - INFO - Chat request - Thread: test123, Message length: 5
+2025-09-30 17:27:01,638 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-09-30 17:27:01,641 - __main__ - ERROR - Error in chat after 0.13s: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+Traceback (most recent call last):
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 123, in chat
+    for event in chatbot_graph.stream(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 2657, in stream
+    for _ in runner.tick(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_runner.py", line 162, in tick
+    run_with_retry(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/pregel/_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 657, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 401, in invoke
+    ret = self.func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/api_server.py", line 64, in chatbot_node
+    response = llm.invoke(messages)
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 395, in invoke
+    self.generate_prompt(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1023, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 840, in generate
+    self._generate_with_cache(
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_core/language_models/chat_models.py", line 1089, in _generate_with_cache
+    result = self._generate(
+             ^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/langchain_groq/chat_models.py", line 533, in _generate
+    response = self.client.create(messages=message_dicts, **params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/resources/chat/completions.py", line 456, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1242, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ericv/webchat/lib/chatbot/.venv/lib/python3.12/site-packages/groq/_base_client.py", line 1044, in request
+    raise self._make_status_error_from_response(err.response) from None
+groq.BadRequestError: Error code: 400 - {'error': {'message': 'The model `mixtral-8x7b-32768` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+During task with name 'chatbot' and id '6dec803b-868f-720d-43d4-51b9b87b3c32'
+2025-09-30 17:27:01,642 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:27:01] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-09-30 17:30:00,870 - werkzeug - INFO -  * Detected change in '/home/ericv/webchat/lib/chatbot/api_server.py', reloading
+2025-09-30 17:30:01,113 - werkzeug - INFO -  * Restarting with stat
+2025-09-30 17:30:01,687 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 17:30:01,689 - __main__ - INFO - Starting Flask API server...
+2025-09-30 17:30:01,689 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 17:30:01,689 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 17:30:01,695 - werkzeug - WARNING -  * Debugger is active!
+2025-09-30 17:30:01,698 - werkzeug - INFO -  * Debugger PIN: 150-999-716
+2025-09-30 17:30:12,511 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 17:30:12,512 - __main__ - INFO - Starting Flask API server...
+2025-09-30 17:30:12,512 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 17:30:12,512 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 17:30:12,518 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.155.247:5000
+2025-09-30 17:30:12,518 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 17:30:12,518 - werkzeug - INFO -  * Restarting with stat
+2025-09-30 17:30:13,045 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 17:30:13,046 - __main__ - INFO - Starting Flask API server...
+2025-09-30 17:30:13,046 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 17:30:13,046 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 17:30:13,051 - werkzeug - WARNING -  * Debugger is active!
+2025-09-30 17:30:13,053 - werkzeug - INFO -  * Debugger PIN: 150-999-716
+2025-09-30 17:30:41,019 - __main__ - INFO - Chat request - Thread: c4e93323-53f7-45cf-8867-4438f8243a01, Message length: 2
+2025-09-30 17:30:41,730 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 17:30:41,740 - __main__ - INFO - Response generated in 0.72s for thread c4e93323-53f7-45cf-8867-4438f8243a01
+2025-09-30 17:30:41,741 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:30:41] "POST /api/chat HTTP/1.1" 200 -
+2025-09-30 17:31:24,252 - __main__ - INFO - Chat request - Thread: c4e93323-53f7-45cf-8867-4438f8243a01, Message length: 29
+2025-09-30 17:31:28,337 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 17:31:28,340 - __main__ - INFO - Response generated in 4.09s for thread c4e93323-53f7-45cf-8867-4438f8243a01
+2025-09-30 17:31:28,341 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:31:28] "POST /api/chat HTTP/1.1" 200 -
+2025-09-30 17:31:54,817 - __main__ - INFO - Chat request - Thread: c4e93323-53f7-45cf-8867-4438f8243a01, Message length: 24
+2025-09-30 17:31:56,702 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 17:31:56,704 - __main__ - INFO - Response generated in 1.89s for thread c4e93323-53f7-45cf-8867-4438f8243a01
+2025-09-30 17:31:56,707 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:31:56] "POST /api/chat HTTP/1.1" 200 -
+2025-09-30 17:32:03,980 - __main__ - INFO - Chat request - Thread: c4e93323-53f7-45cf-8867-4438f8243a01, Message length: 16
+2025-09-30 17:32:05,388 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 17:32:05,390 - __main__ - INFO - Response generated in 1.41s for thread c4e93323-53f7-45cf-8867-4438f8243a01
+2025-09-30 17:32:05,390 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:32:05] "POST /api/chat HTTP/1.1" 200 -
+2025-09-30 17:44:10,713 - __main__ - INFO - Chat request - Thread: cd92649c-0547-4be8-a318-69bdccc0ef77, Message length: 8
+2025-09-30 17:44:12,165 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 17:44:12,167 - __main__ - INFO - Response generated in 1.45s for thread cd92649c-0547-4be8-a318-69bdccc0ef77
+2025-09-30 17:44:12,167 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:44:12] "POST /api/chat HTTP/1.1" 200 -
+2025-09-30 17:44:21,365 - __main__ - INFO - Chat request - Thread: cd92649c-0547-4be8-a318-69bdccc0ef77, Message length: 12
+2025-09-30 17:44:21,631 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 17:44:21,633 - __main__ - INFO - Response generated in 0.27s for thread cd92649c-0547-4be8-a318-69bdccc0ef77
+2025-09-30 17:44:21,633 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 17:44:21] "POST /api/chat HTTP/1.1" 200 -
+2025-09-30 21:21:08,449 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 21:21:08,454 - __main__ - INFO - Starting Flask API server...
+2025-09-30 21:21:08,454 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 21:21:08,454 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 21:21:08,475 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.155.247:5000
+2025-09-30 21:21:08,475 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-30 21:21:08,477 - werkzeug - INFO -  * Restarting with stat
+2025-09-30 21:21:09,068 - __main__ - INFO - Chatbot initialized successfully
+2025-09-30 21:21:09,069 - __main__ - INFO - Starting Flask API server...
+2025-09-30 21:21:09,069 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-09-30 21:21:09,069 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-09-30 21:21:09,075 - werkzeug - WARNING -  * Debugger is active!
+2025-09-30 21:21:09,143 - werkzeug - INFO -  * Debugger PIN: 100-638-962
+2025-09-30 21:56:16,021 - __main__ - INFO - Chat request - Thread: 956a2049-e755-4c75-8034-942990c2d269, Message length: 2
+2025-09-30 21:56:18,772 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 21:56:18,788 - __main__ - INFO - Response generated in 2.77s for thread 956a2049-e755-4c75-8034-942990c2d269
+2025-09-30 21:56:18,789 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 21:56:18] "POST /api/chat HTTP/1.1" 200 -
+2025-09-30 21:56:26,863 - __main__ - INFO - Chat request - Thread: 956a2049-e755-4c75-8034-942990c2d269, Message length: 15
+2025-09-30 21:56:33,425 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 21:56:33,430 - __main__ - INFO - Response generated in 6.57s for thread 956a2049-e755-4c75-8034-942990c2d269
+2025-09-30 21:56:33,430 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 21:56:33] "POST /api/chat HTTP/1.1" 200 -
+2025-09-30 23:00:04,969 - __main__ - INFO - Chat request - Thread: 3328fb6f-0733-45d0-98c0-6497d48d4399, Message length: 35
+2025-09-30 23:00:07,853 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 23:00:07,866 - __main__ - INFO - Response generated in 2.90s for thread 3328fb6f-0733-45d0-98c0-6497d48d4399
+2025-09-30 23:00:07,871 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 23:00:07] "POST /api/chat HTTP/1.1" 200 -
+2025-09-30 23:00:53,052 - __main__ - INFO - Chat request - Thread: 06a343f2-80d7-44f8-bd7a-02169870fefa, Message length: 16
+2025-09-30 23:00:53,325 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-09-30 23:00:53,330 - __main__ - INFO - Response generated in 0.28s for thread 06a343f2-80d7-44f8-bd7a-02169870fefa
+2025-09-30 23:00:53,331 - werkzeug - INFO - 127.0.0.1 - - [30/Sep/2025 23:00:53] "POST /api/chat HTTP/1.1" 200 -
+2025-10-01 10:12:15,605 - __main__ - INFO - Chatbot initialized successfully
+2025-10-01 10:12:15,607 - __main__ - INFO - Starting Flask API server...
+2025-10-01 10:12:15,607 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-10-01 10:12:15,607 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-10-01 10:12:15,614 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.155.247:5000
+2025-10-01 10:12:15,615 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-10-01 10:12:15,615 - werkzeug - INFO -  * Restarting with stat
+2025-10-01 10:12:16,132 - __main__ - INFO - Chatbot initialized successfully
+2025-10-01 10:12:16,133 - __main__ - INFO - Starting Flask API server...
+2025-10-01 10:12:16,133 - __main__ - INFO - Backend will run on http://localhost:5000
+2025-10-01 10:12:16,133 - __main__ - INFO - Make sure your GROQ_API_KEY is set in .env file
+2025-10-01 10:12:16,138 - werkzeug - WARNING -  * Debugger is active!
+2025-10-01 10:12:16,142 - werkzeug - INFO -  * Debugger PIN: 100-638-962
+2025-10-01 10:15:56,223 - __main__ - INFO - Chat request - Thread: 6f1a773b-c76d-4cb2-9dd6-f72ae839a8d7, Message length: 21
+2025-10-01 10:15:56,558 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-01 10:15:56,567 - __main__ - INFO - Response generated in 0.34s for thread 6f1a773b-c76d-4cb2-9dd6-f72ae839a8d7
+2025-10-01 10:15:56,567 - werkzeug - INFO - 127.0.0.1 - - [01/Oct/2025 10:15:56] "POST /api/chat HTTP/1.1" 200 -
+2025-10-01 10:21:22,589 - __main__ - INFO - Chat request - Thread: 6f1a773b-c76d-4cb2-9dd6-f72ae839a8d7, Message length: 13
+2025-10-01 10:21:22,993 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-01 10:21:22,995 - __main__ - INFO - Response generated in 0.41s for thread 6f1a773b-c76d-4cb2-9dd6-f72ae839a8d7
+2025-10-01 10:21:22,996 - werkzeug - INFO - 127.0.0.1 - - [01/Oct/2025 10:21:22] "POST /api/chat HTTP/1.1" 200 -
+2025-10-01 10:21:44,985 - __main__ - INFO - Chat request - Thread: 6f1a773b-c76d-4cb2-9dd6-f72ae839a8d7, Message length: 25
+2025-10-01 10:21:45,402 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-01 10:21:45,404 - __main__ - INFO - Response generated in 0.42s for thread 6f1a773b-c76d-4cb2-9dd6-f72ae839a8d7
+2025-10-01 10:21:45,405 - werkzeug - INFO - 127.0.0.1 - - [01/Oct/2025 10:21:45] "POST /api/chat HTTP/1.1" 200 -
+2025-10-01 10:22:12,345 - __main__ - INFO - Chat request - Thread: 871e3c0e-c55d-475d-a571-44fadfc41bb2, Message length: 2
+2025-10-01 10:22:12,554 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-01 10:22:12,556 - __main__ - INFO - Response generated in 0.21s for thread 871e3c0e-c55d-475d-a571-44fadfc41bb2
+2025-10-01 10:22:12,556 - werkzeug - INFO - 127.0.0.1 - - [01/Oct/2025 10:22:12] "POST /api/chat HTTP/1.1" 200 -

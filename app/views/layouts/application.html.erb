@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Engineering Loop</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <%= link_to "Engineering Loop", root_path, class: "navbar-brand fw-bold" %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><%= link_to "Home", root_path, class: "nav-link #{current_page?(root_path) ? 'active' : ''}" %></li>
+            <li class="nav-item"><%= link_to "About", about_path, class: "nav-link #{current_page?(about_path) ? 'active' : ''}" %></li>
+            <li class="nav-item"><%= link_to "Contact", contact_path, class: "nav-link #{current_page?(contact_path) ? 'active' : ''}" %></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-0">
+      <div class="row g-0">
+        <main class="col-lg-8 col-md-7 py-4 px-4">
+          <%= yield %>
+        </main>
+        <aside class="col-lg-4 col-md-5 bg-light border-start">
+          <%= render 'shared/chat' %>
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>
